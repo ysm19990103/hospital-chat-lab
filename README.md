@@ -1,2 +1,60 @@
-# hospital-chat-lab
-值班群聊｜医院群聊模拟器 — Offline conversation practice for junior doctors: typed replies, branching scenarios, and debriefs.
+# 值班群聊｜医院群聊模拟器
+
+一个独立的医院工作沟通练习应用。用户以李晨光的身份进入虚构工作群，自由输入回复，经历三轮对话，再查看表达复盘、收藏参考话术或导出练习。
+
+[在线练习](https://ysm19990103.github.io/hospital-chat-lab/) · [下载完整离线版](https://ysm19990103.github.io/hospital-chat-lab/hospital-chat-offline.html)
+
+本项目为全新仓库 `hospital-chat-lab`，与 `resident-survival-room` 分别维护，不修改或合并既有应用。
+
+## 功能
+
+- 8 个情景、24 轮对话：疲劳与支持、任务排序、交接闭环、换班边界、群聊归责、患者隐私、真实记录、科研贡献。
+- 自由输入回应；本地分支根据表达线索调整角色回复。
+- “协商练习”和“持续施压”两种模式，练习协商与未解决冲突的后续支持路径。
+- 逐轮提示事实、影响／风险、具体请求、确认安排；没有职业能力评分。
+- 24 条口语化参考回复，可复制和收藏。
+- Markdown 复盘和收藏导出，导出前预览。
+- 李晨光、周老师、林医生人物头像；白色聊天气泡、深绿界面、窄屏布局。
+- 完整单文件离线版，内含人物图片、样式、代码与所有情景。
+
+## 隐私和边界
+
+应用不使用远程 AI、API 密钥、患者数据库、统计追踪或聊天上传。消息不发送给真实同事。
+
+对话和草稿只保存在当前页面内存，刷新后清除。浏览器仅保存完成情景的 ID 和固定话术收藏的 ID。可识别信息检查只覆盖部分常见格式，不能代替人工去标识。在线托管服务可能产生常规访问日志。
+
+表达反馈使用预设规则，可能误判复杂语境、否定、反讽或特殊表述。它不能验证事实、评价职业能力、判断法律责任或预测现实结果。患者安全表达应对应实际风险；一般材料与科研贡献问题不需要虚构患者伤害。即时危险应按本院流程及时求助，不等群消息。
+
+## 致谢
+
+感谢陈子杨（“中年男人陈子杨”）通过公开分享，为年轻医生适应职业生涯最初几年的工作与人际挑战提供教学、经验和启发。他关于沟通、职业处境与自我保护的讨论，为本项目提供了参考。
+
+本应用为独立教学改编，具体情景与话术并非陈子杨原话，也不代表其背书。角色均为虚构教学人物。素材来源见 [ASSET_SOURCES.md](ASSET_SOURCES.md)。
+
+## 本地使用
+
+无需安装应用依赖。使用 Node.js 24 或兼容版本：
+
+```sh
+npm run build
+npm test
+npm run check
+```
+
+打开 `dist/hospital-chat-offline.html` 即可离线使用；或用任意静态文件服务器提供 `dist/`。
+
+源文件位于 `dist/`，构建脚本只负责将它们与图片封装成完整离线文件。离线生成文件不入 Git，由部署工作流生成。
+
+## 部署
+
+GitHub Pages 使用 `.github/workflows/pages.yml`。向 `main` 推送或手动运行工作流后，执行构建、检查与测试，再发布 `dist/`。PR 只运行验证。没有定时任务，无须个人令牌或外部 API。
+
+所有操作依赖平台短期凭证；官方 Actions 固定到提交 SHA。发布文件使用相对路径，支持项目子目录部署。
+
+## 参考
+
+- [AHRQ TeamSTEPPS · CUS](https://www.ahrq.gov/teamstepps-program/curriculum/mutual/tools/cus.html)：说明担忧及其与安全的具体关系。
+- [AHRQ TeamSTEPPS · Two-Challenge Rule](https://www.ahrq.gov/teamstepps-program/curriculum/mutual/tools/rule.html)：未被解决的安全担忧与升级支持。
+- [国家卫生健康委 · 医疗质量安全核心制度要点](https://www.nhc.gov.cn/yzygj/c100068/201804/42ab2552298047679cd6ec733f233862.shtml)：职责、交接班、记录及信息安全制度。
+
+参考核查日期：2026-11-04。情景台词为原创教学改编，不是上述来源原文。验证和已知局限见 [VERIFICATION.md](VERIFICATION.md)。
